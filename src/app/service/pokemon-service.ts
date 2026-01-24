@@ -68,6 +68,9 @@ export class PokemonService {
   get pokemonSpecies(): Signal<Species | null> {
     return this._pokemonSpecies.asReadonly();
   }
+  get pokemonEvolutionChain(): Signal<EvolutionChain | null> {
+    return this._pokemonEvolutionChain.asReadonly();
+  }
 
   set currentPokemon(val: number) {
     const url = this.BASE_URL + 'pokemon/' + val;
