@@ -163,6 +163,10 @@ export class PokemonService {
     }
   }
 
+  public searchPokemon(searchTerm: string) {
+    return this._pokemons().filter((p) => p.name.includes(searchTerm) || p.id == Number.parseInt(searchTerm))
+  }
+
   private parseResponse(response: any) {
     for (const pokemon of response.results) {
       const segments: string[] = pokemon.url.split('/');

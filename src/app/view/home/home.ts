@@ -1,12 +1,11 @@
-import { Component, inject, signal, Signal, WritableSignal } from '@angular/core';
-import { PixelBox } from '../components/pixel-box/pixel-box';
+import { Component, computed, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { PokemonService } from '../../service/pokemon-service';
 import { Pokemon, SimplePokemon } from '../../model/pokemon';
-import { NgClass } from '@angular/common';
 import { RouterLink } from "@angular/router";
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -37,19 +36,33 @@ export class Home {
   protected previous: Signal<string>;
   protected pokemons: Signal<SimplePokemon[]>;
   protected currentPokemon: Signal<Pokemon | null>
-
+  
+  protected searchTerm: WritableSignal<string>
 
   constructor() {
     this._pokeService = inject(PokemonService);
 
     this._pokeService.getPokemons();
 
-    this.pokemons = this._pokeService.pokemons;
     this.count = this._pokeService.count
     this.next = this._pokeService.next
     this.previous = this._pokeService.previous
-
+    
     this.currentPokemon = this._pokeService.currentPokemon
+    
+    this.searchTerm = signal('')
+
+
+    this.pokemons = computed(() => {
+      let result: SimplePokemon[] = []
+      if(this.searchTerm()) {
+        result = this._pokeService.searchPokemon(this.searchTerm())
+      } else {
+        result = this._pokeService.pokemons()
+      }
+
+      return result
+    });
   }
 
   previousPage() {
@@ -60,7 +73,7 @@ export class Home {
     this._pokeService.nextPage()
   }
 
-  async selectPokemon(pokemon: SimplePokemon) {
+  selectPokemon(pokemon: SimplePokemon) {
     this._pokeService.currentPokemon = pokemon.id
   }
 

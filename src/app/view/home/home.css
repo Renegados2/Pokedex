@@ -423,3 +423,149 @@
 .pokemon-list::after {
   margin: -8px;
 }
+
+.search-bar-border,
+.search-bar-border--wrapper {
+  clip-path: polygon(0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px);
+  position: relative;
+}
+.search-bar-border {
+  border: 12px solid transparent;
+}
+.search-bar-border--wrapper {
+  width: fit-content;
+  height: fit-content;
+}
+.search-bar-border--wrapper .search-bar-border {
+  display: block;
+  clip-path: polygon(12px 24px,
+    16px 24px,
+    16px 16px,
+    24px 16px,
+    24px 12px,
+    calc(100% - 24px) 12px,
+    calc(100% - 24px) 16px,
+    calc(100% - 16px) 16px,
+    calc(100% - 16px) 24px,
+    calc(100% - 12px) 24px,
+    calc(100% - 12px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 12px),
+    24px calc(100% - 12px),
+    24px calc(100% - 16px),
+    16px calc(100% - 16px),
+    16px calc(100% - 24px),
+    12px calc(100% - 24px));
+}
+.search-bar-border::after,
+.search-bar-border--wrapper::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px,
+    0px 50%,
+    12px 50%,
+    12px 24px,
+    16px 24px,
+    16px 16px,
+    24px 16px,
+    24px 12px,
+    calc(100% - 24px) 12px,
+    calc(100% - 24px) 16px,
+    calc(100% - 16px) 16px,
+    calc(100% - 16px) 24px,
+    calc(100% - 12px) 24px,
+    calc(100% - 12px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 12px),
+    24px calc(100% - 12px),
+    24px calc(100% - 16px),
+    16px calc(100% - 16px),
+    16px calc(100% - 24px),
+    12px calc(100% - 24px),
+    12px 50%,
+    0px 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ff888b;
+  display: block;
+  pointer-events: none;
+}
+.search-bar-border::after {
+  margin: -12px;
+}

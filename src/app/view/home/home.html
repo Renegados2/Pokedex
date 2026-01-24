@@ -61,9 +61,13 @@
   </div>
 
   <div class="flex-1/2">
-    <div class="pokemon-list relative bg-white h-[84%] space-y-2">
+    <div class="h-[10%] p-[1vh] bg-red-300 rounded-2xl mb-[1vh] flex justify-center items-center">
+      <input class="search-bar-border w-full h-[90%] text-[3vw] px-[1vw] bg-white" [(ngModel)]="searchTerm" placeholder="Search"/>
+    </div>
+    <div class="pokemon-list relative bg-white h-[72%] space-y-2">
       <div class="absolute bg-red-400 h-full w-[4.2vw] z-[-1]"></div>
       <div class="overflow-auto h-full">
+        @if (pokemons()[0]) {
         @for (pokemon of pokemons(); track $index) {
         <div class="py-[1vh] px-[1vw] flex rounded-3xl cursor-pointer pixel-border text-[200%]" (click)="selectPokemon(pokemon)"
           [style.--border-color]="pokemon.name == currentPokemon()?.name ? COLORS.selectedPokemonBox.border : ''">
@@ -73,6 +77,11 @@
 
           <h1>{{ pokemon.name }}</h1>
         </div>
+        }
+        } @else {
+          <div class="flex justify-center">
+          <h1 class="text-[4vw]">No pokemons found</h1>
+          </div>
         }
       </div>
     </div>
