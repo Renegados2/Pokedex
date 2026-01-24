@@ -1,0 +1,33 @@
+<div class="w-full h-full bg-amber-400">
+  <div class="w-full h-[10vh] bg-purple-600 flex">
+    <div class="w-[15vw] bg-red-500"></div>
+    <div class="w-[55vw] bg-blue-500"></div>
+    <div class="w-[30vw] bg-yellow-500"></div>
+  </div>
+  <div class="w-full bg-green-400 h-[60vh] flex">
+    <div class="py-[1vh] px-[1vw] w-1/4 bg-yellow-700 h-full flex flex-col items-center space-y-[1.4vh]">
+      @for (stat of currentPokemon()?.stats; track $index) {
+      <div class="w-full flex justify-between">
+        @switch (stat.stat.name) {
+          @case ('special-attack') {
+            <span class="text-[3vw]"> Sp. Atk </span>
+          }
+          @case ('special-defense') {
+            <span class="text-[3vw]"> Sp. Def </span>
+          }
+          @default {
+            <span class="text-[3vw]"> {{ stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1) }} </span>
+          }
+        }
+        <progress id="file" [value]="stat.base_stat" max="100" class="pixel-stat-bar my-[1vh] w-[20vh]"> 32% </progress>
+      </div>
+      }
+    </div>
+
+    <div class="mx-[1vw] bg-red-600 h-full w-3/4">
+      <div class="w-full bg-amber-900 h-1/3"></div>
+      <div class="w-full bg-yellow-900 h-1/3"></div>
+      <div class="w-full bg-blue-900 h-1/3"></div>
+    </div>
+  </div>
+</div>
