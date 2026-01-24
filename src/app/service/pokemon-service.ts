@@ -8,8 +8,11 @@ import { Species } from '../model/species';
 })
 export class PokemonService {
   private readonly BASE_URL = 'https://pokeapi.co/api/v2/';
+  private readonly PAGINATOR_JUMP: number = 20;
+
   private _http: HttpClient;
 
+  private _allPokemons: WritableSignal<SimplePokemon[]>;
   private _pokemons: WritableSignal<SimplePokemon[]>;
   private _error: WritableSignal<boolean>;
 
@@ -22,9 +25,12 @@ export class PokemonService {
 
   public pokemons: Signal<SimplePokemon[]>;
 
+  private currentIndex: number;
+
   constructor() {
     this._http = inject(HttpClient);
     this._pokemons = signal<SimplePokemon[]>([]);
+    this._allPokemons = signal<SimplePokemon[]>([]);
     this._pokemonSpecies = signal(null);
     this._error = signal<boolean>(false);
 
@@ -35,6 +41,8 @@ export class PokemonService {
     this._currentPokemon = signal(null);
 
     this.pokemons = this._pokemons.asReadonly();
+
+    this.currentIndex = 0;
   }
 
   // Getters
@@ -77,7 +85,7 @@ export class PokemonService {
   // Functions
 
   public getPokemons() {
-    const url = this.BASE_URL + 'pokemon';
+    const url = this.BASE_URL + 'pokemon?limit=100000&offset=0';
 
     this._http.get<any>(url).subscribe({
       next: (response) => {
@@ -87,7 +95,7 @@ export class PokemonService {
 
         this.parseResponse(response);
 
-        this._pokemons.set(response.results);
+        this._allPokemons.set(response.results);
         this._error.set(false);
       },
       error: () => {
@@ -95,50 +103,36 @@ export class PokemonService {
         this._error.set(true);
       },
       complete: () => {
-        this.currentPokemon = this._pokemons()[0].id;
+        this.currentPokemon = this._allPokemons()[0].id;
+        const pokemons = this._allPokemons().slice(0, this.PAGINATOR_JUMP);
+        this._pokemons.set(pokemons);
       },
     });
   }
 
   public previousPage() {
-    if (this._previous() !== '') {
-      this._http.get<any>(this._previous()).subscribe({
-        next: (response) => {
-          this._count.set(response.count);
-          this._next.set(response.next);
-          this._previous.set(response.previous);
+    if (this.currentIndex > 0) {
+      const startIndex = this.currentIndex - this.PAGINATOR_JUMP;
+      const lastIndex = this.currentIndex;
 
-          this.parseResponse(response);
-
-          this._pokemons.set(response.results);
-          this._error.set(false);
-        },
-        error: () => {
-          this._pokemons.set([]);
-          this._error.set(true);
-        },
-      });
+      const pokemons = this._allPokemons().slice(startIndex, lastIndex);
+      this._pokemons.set(pokemons);
+      this.currentIndex = startIndex;
     }
   }
 
   public nextPage() {
-    if (this._next() !== '') {
-      this._http.get<any>(this._next()).subscribe({
-        next: (response) => {
-          this._count.set(response.count);
-          this._next.set(response.next);
-          this._previous.set(response.previous);
+    const total = this._allPokemons().length;
 
-          this.parseResponse(response);
+    const startIndex = this.currentIndex + this.PAGINATOR_JUMP;
 
-          this._pokemons.set(response.results);
-          this._error.set(false);
-        },
-        error: () => {
-          this._pokemons.set([]);
-          this._error.set(true);
-        },
-      });
+    if (startIndex < total) {
+      const lastIndex = Math.min(startIndex + this.PAGINATOR_JUMP, total);
+
+      const pokemons = this._allPokemons().slice(startIndex, lastIndex);
+
+      this.currentIndex = startIndex;
+      this._pokemons.set(pokemons);
     }
   }
 
@@ -194,9 +188,6 @@ export class PokemonService {
     const randomIndex = Math.floor(Math.random() * length);
 
     const text: string = texts?.[randomIndex].flavor_text ?? '';
-    console.log("text");
-    console.log(text);
-
 
     return text;
   }

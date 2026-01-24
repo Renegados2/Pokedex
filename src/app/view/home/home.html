@@ -77,9 +77,9 @@
       </div>
     </div>
     <div class=" h-[16%] w-full flex justify-evenly items-center px-[3vw]">
-      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" [ngClass]="{'cursor-pointer': this.previous()}"
+      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" class="cursor-pointer"
         style="image-rendering: pixelated" [style.--arrow-inner]="COLORS.arrowColors.inner"
-        [style.--arrow-border]="COLORS.arrowColors.border" (click)="previous() ? previousPage() : ''">
+        [style.--arrow-border]="COLORS.arrowColors.border" (click)="previousPage()">
         <g fill="var(--arrow-border)">
           <!-- Línea vertical (6 px lógicos = 12) -->
           <rect x="16" y="0" width="2" height="22" />
@@ -113,9 +113,9 @@
         </g>
       </svg>
 
-      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" [ngClass]="{'cursor-pointer': this.next()}"
+      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" 
         style="image-rendering: pixelated" [style.--arrow-inner]="COLORS.arrowColors.inner"
-        [style.--arrow-border]="COLORS.arrowColors.border" (click)="next() ? nextPage() : ''">
+        [style.--arrow-border]="COLORS.arrowColors.border" (click)="nextPage()" class="cursor-pointer">
         <g fill="var(--arrow-border)">
           <!-- Línea vertical (6 px lógicos = 12) -->
           <rect x="0" y="0" width="2" height="22" />
