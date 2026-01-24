@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'tailwindcss';
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #f8f8f8;
+  background-image:
+    linear-gradient(to right, #a7a8a8 0.3vh, transparent 0.1vh),
+    linear-gradient(to bottom, #a7a8a8 0.3vh, transparent 0.1vh);
+  background-size: 10vh 10vh;
+  height: 100%;
+  font-family: 'PokemonPixel';
+}
+
+@font-face {
+  font-family: 'PokemonPixel';
+  src: url('/assets/fonts/pokemon-bw.otf.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}

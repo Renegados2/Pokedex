@@ -1,0 +1,31 @@
+<!-- F -->
+<rect x="10" y="8" width="2" height="12" />
+<rect x="12" y="8" width="6" height="2" />
+<rect x="12" y="14" width="4" height="2" />
+
+<!-- O -->
+<rect x="21" y="10" width="2" height="8" />
+<rect x="29" y="10" width="2" height="8" />
+<rect x="23" y="8" width="6" height="2" />
+<rect x="23" y="18" width="6" height="2" />
+
+<!-- R -->
+<rect x="35" y="8" width="2" height="12" />
+<rect x="37" y="8" width="6" height="2" />
+<rect x="37" y="14" width="6" height="2" />
+<rect x="43" y="10" width="2" height="4" />
+<rect x="43" y="16" width="2" height="4" />
+
+<!-- M -->
+<rect x="49" y="8" width="2" height="12" />
+<rect x="57" y="8" width="2" height="12" />
+<rect x="51" y="10" width="2" height="2" />
+<rect x="53" y="12" width="2" height="2" />
+<rect x="55" y="10" width="2" height="2" />
+
+<!-- S -->
+<rect x="63" y="8" width="8" height="2" />
+<rect x="63" y="10" width="2" height="4" />
+<rect x="63" y="14" width="8" height="2" />
+<rect x="69" y="16" width="2" height="2" />
+<rect x="63" y="18" width="8" height="2" />

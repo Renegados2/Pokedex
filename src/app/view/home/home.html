@@ -1,0 +1,153 @@
+<header class="w-full bg-red text-center h-[8vh] mb-[2vh] border-b-10 border-black" [style.background-color]="COLORS.primary">
+  <h1 class="text-[5vh] text-white">
+    Daw Pokedex
+  </h1>
+</header>
+
+<div class="main h-[90vh]" >
+  <div class="flex-1/2 flex flex-col items-center w-full  justify-between">
+    <div class="relative">
+      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 207 28" width="540" height="84"
+        style="image-rendering: pixelated" [style.--bg]="COLORS.boxColors.backgroundColor"
+        [style.--border-outer]="COLORS.boxColors.borderOuterColor"
+        [style.--border-inner]="COLORS.boxColors.borderInnerColor">
+
+        >
+        <!-- ===== BORDE EXTERIOR ===== -->
+        <rect x="2" y="0" width="200" height="28" fill="var(--border-outer)" />
+        <rect x="0" y="2" width="204" height="24" fill="var(--border-outer)" />
+
+        <!-- ===== BORDE INTERIOR ===== -->
+        <rect x="4" y="2" width="196" height="24" fill="var(--border-inner)" />
+        <rect x="2" y="4" width="200" height="20" fill="var(--border-inner)" />
+
+        <!-- ===== FONDO ===== -->
+        <rect x="6" y="4" width="192" height="20" fill="var(--bg)" />
+        <rect x="4" y="6" width="196" height="16" fill="var(--bg)" />
+      </svg>
+      <div class="absolute top-4.5 left-5.5 h-12 w-[90%] flex justify-center items-center"
+        [style.background-color]="COLORS.boxColors.divBackgroundColor">
+        <div class="h-[85%] w-[98%] text-[250%] flex justify-center items-center"
+          [style.background-color]="COLORS.boxColors.divInnerDivColor" [style.color]="COLORS.boxColors.textColor">
+          {{ currentPokemon()?.name }}
+        </div>
+      </div>
+    </div>
+    <img [src]="currentPokemon()?.sprites?.front_default" alt="Pokemon" class="h-[60vh]">
+    <div class="pixel-corners h-[20vh] w-[40vw] mb-[10vh] bg-red-500 flex justify-center items-center">
+      <div class="flex flex-col pl-[3vw] space-y-[3vh] justify-center relative w-[80%] h-[95%] bg-white text-4xl">
+
+        <p class="">
+          Height: {{ currentPokemon()?.height }} dm
+        </p>
+        <p class="">
+          Weight: {{ currentPokemon()?.weight }} hg
+        </p>
+
+        <a [routerLink]="['/details', currentPokemon()?.id]" class="absolute flex right-0 bottom-0 px-[1vw] py-[1vh] mb-[1vh] mr-[1vw] space-x-1 rounded-3xl text-white font-bold cursor-pointer border-4 border-black" [style.backgroundColor]="COLORS.primary">
+          Show more
+        </a>
+
+
+        <div class="absolute flex right-0 top-0 p-1 space-x-1">
+          @for (type of currentPokemon()?.types; track $index) {
+          <img [src]="'assets/types/' + type.type.name + '.png'" [alt]="type.type.name + ' type image'" class="w-[2vw]">
+          }
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-1/2">
+    <div class="pokemon-list relative bg-white h-[84%] space-y-2">
+      <div class="absolute bg-red-400 h-full w-[4.2vw] z-[-1]"></div>
+      <div class="overflow-auto h-full">
+        @for (pokemon of pokemons(); track $index) {
+        <div class="py-[1vh] px-[1vw] flex rounded-3xl cursor-pointer pixel-border text-[200%]" (click)="selectPokemon(pokemon)"
+          [style.--border-color]="pokemon.name == currentPokemon()?.name ? COLORS.selectedPokemonBox.border : ''">
+
+          <img src="assets/pokeball.svg" alt="Pokeball" class="w-[2vw] mr-[1vw]" style="color: white;">
+          <span class="mr-[1vw]">{{ pokemon.id.toString().padStart(4, '0') }}</span>
+
+          <h1>{{ pokemon.name }}</h1>
+        </div>
+        }
+      </div>
+    </div>
+    <div class=" h-[16%] w-full flex justify-evenly items-center px-[3vw]">
+      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" [ngClass]="{'cursor-pointer': this.previous()}"
+        style="image-rendering: pixelated" [style.--arrow-inner]="COLORS.arrowColors.inner"
+        [style.--arrow-border]="COLORS.arrowColors.border" (click)="previous() ? previousPage() : ''">
+        <g fill="var(--arrow-border)">
+          <!-- Línea vertical (6 px lógicos = 12) -->
+          <rect x="16" y="0" width="2" height="22" />
+
+          <!-- Línea horizontal (3 px lógicos) -->
+          <rect x="12" y="0" width="6" height="2" />
+          <rect x="12" y="22" width="6" height="2" />
+
+          <!-- Diagonal Up Down -->
+          <rect x="10" y="0" width="2" height="4" />
+          <rect x="8" y="2" width="2" height="4" />
+          <rect x="6" y="4" width="2" height="4" />
+          <rect x="4" y="6" width="2" height="4" />
+          <rect x="2" y="8" width="2" height="4" />
+          <rect x="0" y="10" width="2" height="4" />
+
+          <!-- Diagonal Down Up -->
+          <rect x="2" y="12" width="2" height="4" />
+          <rect x="4" y="14" width="2" height="4" />
+          <rect x="6" y="16" width="2" height="4" />
+          <rect x="8" y="18" width="2" height="4" />
+          <rect x="10" y="20" width="2" height="4" />
+        </g>
+
+        <g fill="var(--arrow-inner)">
+          <rect x="12" y="2" width="4" height="20" />
+          <rect x="10" y="4" width="2" height="16" />
+          <rect x="8" y="6" width="2" height="12" />
+          <rect x="6" y="8" width="2" height="8" />
+          <rect x="4" y="10" width="2" height="4" />
+        </g>
+      </svg>
+
+      <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80" [ngClass]="{'cursor-pointer': this.next()}"
+        style="image-rendering: pixelated" [style.--arrow-inner]="COLORS.arrowColors.inner"
+        [style.--arrow-border]="COLORS.arrowColors.border" (click)="next() ? nextPage() : ''">
+        <g fill="var(--arrow-border)">
+          <!-- Línea vertical (6 px lógicos = 12) -->
+          <rect x="0" y="0" width="2" height="22" />
+
+          <!-- Línea horizontal (3 px lógicos) -->
+          <rect x="0" y="0" width="6" height="2" />
+          <rect x="0" y="22" width="6" height="2" />
+
+          <!-- Diagonal Up Down -->
+          <rect x="6" y="0" width="2" height="4" />
+          <rect x="8" y="2" width="2" height="4" />
+          <rect x="10" y="4" width="2" height="4" />
+          <rect x="12" y="6" width="2" height="4" />
+          <rect x="14" y="8" width="2" height="4" />
+          <rect x="16" y="10" width="2" height="4" />
+
+          <!-- Diagonal Down Up -->
+          <rect x="14" y="12" width="2" height="4" />
+          <rect x="12" y="14" width="2" height="4" />
+          <rect x="10" y="16" width="2" height="4" />
+          <rect x="8" y="18" width="2" height="4" />
+          <rect x="6" y="20" width="2" height="4" />
+        </g>
+
+        <g fill="var(--arrow-inner)">
+          <rect x="2" y="2" width="4" height="20" />
+          <rect x="6" y="4" width="2" height="16" />
+          <rect x="8" y="6" width="2" height="12" />
+          <rect x="10" y="8" width="2" height="8" />
+          <rect x="12" y="10" width="2" height="4" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>

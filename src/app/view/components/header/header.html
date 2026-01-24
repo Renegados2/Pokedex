@@ -1,7 +1,7 @@
-<nav>
+<nav class="h-full pt-2 overflow-hidden">
     <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
         style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder">
+        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="previousPokemon()">
         <g fill="var(--arrow-border)">
             <!-- Línea vertical (6 px lógicos = 12) -->
             <rect x="16" y="0" width="2" height="22" />
@@ -35,175 +35,16 @@
         </g>
     </svg>
 
-    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 28" width="240" height="84"
-        style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--border-inner]="inner" [style.--text]="text">
-
-        >
-        <!-- ===== BORDE EXTERIOR ===== -->
-        <rect x="2" y="0" width="76" height="28" fill="var(--border-outer)" />
-        <rect x="0" y="2" width="80" height="24" fill="var(--border-outer)" />
-
-        <!-- ===== BORDE INTERIOR ===== -->
-        <rect x="4" y="2" width="72" height="24" fill="var(--border-inner)" />
-        <rect x="2" y="4" width="76" height="20" fill="var(--border-inner)" />
-
-        <!-- ===== FONDO ===== -->
-        <rect x="6" y="4" width="68" height="20" fill="var(--bg)" />
-        <rect x="4" y="6" width="72" height="16" fill="var(--bg)" />
-
-        <!-- ===== DATA ===== -->
-        <g fill="var(--text)">
-            <!-- D (5px) -->
-            <rect x="14" y="8" width="2" height="12" />
-            <rect x="16" y="8" width="6" height="2" />
-            <rect x="16" y="18" width="6" height="2" />
-            <rect x="22" y="10" width="2" height="8" />
-
-            <!-- A (5px) -->
-            <rect x="28" y="10" width="2" height="10" />
-            <rect x="36" y="10" width="2" height="10" />
-            <rect x="30" y="8" width="6" height="2" />
-            <rect x="30" y="14" width="6" height="2" />
-
-            <!-- T (5px) -->
-            <rect x="42" y="8" width="10" height="2" />
-            <rect x="46" y="10" width="2" height="10" />
-
-            <!-- A (5px) -->
-            <rect x="56" y="10" width="2" height="10" />
-            <rect x="64" y="10" width="2" height="10" />
-            <rect x="58" y="8" width="6" height="2" />
-            <rect x="58" y="14" width="6" height="2" />
-        </g>
-
-    </svg>
-    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 28" width="240" height="84"
-        style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--border-inner]="inner" [style.--text]="text">
-
-        >
-        <!-- ===== BORDE EXTERIOR ===== -->
-        <rect x="2" y="0" width="76" height="28" fill="var(--border-outer)" />
-        <rect x="0" y="2" width="80" height="24" fill="var(--border-outer)" />
-
-        <!-- ===== BORDE INTERIOR ===== -->
-        <rect x="4" y="2" width="72" height="24" fill="var(--border-inner)" />
-        <rect x="2" y="4" width="76" height="20" fill="var(--border-inner)" />
-
-        <!-- ===== FONDO ===== -->
-        <rect x="6" y="4" width="68" height="20" fill="var(--bg)" />
-        <rect x="4" y="6" width="72" height="16" fill="var(--bg)" />
-
-        <!-- ===== TEXTO INFO ===== -->
-        <g fill="var(--text)">
-            <!-- I (5px) -->
-            <rect x="16.5" y="8" width="10" height="2" />
-            <rect x="20.5" y="10" width="2" height="8" />
-            <rect x="16.5" y="18" width="10" height="2" />
-
-            <!-- N (5px) -->
-            <rect x="30" y="8" width="2" height="12" />
-            <rect x="32" y="11" width="2" height="2" />
-            <rect x="34" y="13" width="2" height="2" />
-            <rect x="36" y="15" width="2" height="2" />
-            <rect x="38" y="8" width="2" height="12" />
-
-            <!-- F (5px) -->
-            <rect x="43" y="8" width="2" height="12" />
-            <rect x="45" y="8" width="6" height="2" />
-            <rect x="45" y="14" width="4" height="2" />
-
-            <!-- O (5px) -->
-            <rect x="54" y="10" width="2" height="8" />
-            <rect x="62" y="10" width="2" height="8" />
-            <rect x="56" y="8" width="6" height="2" />
-            <rect x="56" y="18" width="6" height="2" />
-        </g>
-
-    </svg>
-
-    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 28" width="240" height="84"
-        style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--border-inner]="inner" [style.--text]="text">
-
-        >
-        <!-- ===== BORDE EXTERIOR ===== -->
-        <rect x="2" y="0" width="76" height="28" fill="var(--border-outer)" />
-        <rect x="0" y="2" width="80" height="24" fill="var(--border-outer)" />
-
-        <!-- ===== BORDE INTERIOR ===== -->
-        <rect x="4" y="2" width="72" height="24" fill="var(--border-inner)" />
-        <rect x="2" y="4" width="76" height="20" fill="var(--border-inner)" />
-
-        <!-- ===== FONDO ===== -->
-        <rect x="6" y="4" width="68" height="20" fill="var(--bg)" />
-        <rect x="4" y="6" width="72" height="16" fill="var(--bg)" />
-
-        <!-- ===== TEXTO FORMS ===== -->
-        <g fill="var(--text)">
-            <!-- F -->
-            <rect x="10" y="8" width="2" height="12" />
-            <rect x="12" y="8" width="6" height="2" />
-            <rect x="12" y="14" width="4" height="2" />
-
-            <!-- O -->
-            <rect x="21" y="10" width="2" height="8" />
-            <rect x="29" y="10" width="2" height="8" />
-            <rect x="23" y="8" width="6" height="2" />
-            <rect x="23" y="18" width="6" height="2" />
-
-            <!-- R -->
-            <rect x="35" y="8" width="2" height="12" />
-            <rect x="37" y="8" width="6" height="2" />
-            <rect x="37" y="14" width="6" height="2" />
-            <rect x="43" y="10" width="2" height="4" />
-            <rect x="43" y="16" width="2" height="4" />
-
-            <!-- M -->
-            <rect x="49" y="8" width="2" height="12" />
-            <rect x="57" y="8" width="2" height="12" />
-            <rect x="51" y="10" width="2" height="2" />
-            <rect x="53" y="12" width="2" height="2" />
-            <rect x="55" y="10" width="2" height="2" />
-
-            <!-- S -->
-            <rect x="63" y="8" width="8" height="2" />
-            <rect x="63" y="10" width="2" height="4" />
-            <rect x="63" y="14" width="8" height="2" />
-            <rect x="69" y="16" width="2" height="2" />
-            <rect x="63" y="18" width="8" height="2" />
-        </g>
-
-
-    </svg>
-
-    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 28" width="240" height="84"
-        style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--border-inner]="inner" [style.--text]="text">
-
-        >
-        <!-- ===== BORDE EXTERIOR ===== -->
-        <rect x="2" y="0" width="76" height="28" fill="var(--border-outer)" />
-        <rect x="0" y="2" width="80" height="24" fill="var(--border-outer)" />
-
-        <!-- ===== BORDE INTERIOR ===== -->
-        <rect x="4" y="2" width="72" height="24" fill="var(--border-inner)" />
-        <rect x="2" y="4" width="76" height="20" fill="var(--border-inner)" />
-
-        <!-- ===== FONDO ===== -->
-        <rect x="6" y="4" width="68" height="20" fill="var(--bg)" />
-        <rect x="4" y="6" width="72" height="16" fill="var(--bg)" />
-
-        <!-- ===== TEXTO FORMS ===== -->
-
-
-
-    </svg>
+    @if (loaded()) {
+      @for (button of NAV_BUTTONS; track button) {
+        <app-pixel-box [routerLink]="['/details', currentPokemon()?.id, button]" backgroundColor="#ff3c41" borderInnerColor="#b22a2d" borderOuterColor="#000000" textColor="#ffffff"
+        [svgCode]="navSVGs()[button]" [name]="button"></app-pixel-box>
+      }
+    }
 
     <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
         style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder">
+        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="nextPokemon()">
         <g fill="var(--arrow-border)">
             <!-- Línea vertical (6 px lógicos = 12) -->
             <rect x="0" y="0" width="2" height="22" />

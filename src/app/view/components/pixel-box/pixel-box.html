@@ -1,0 +1,26 @@
+<div class="relative">
+  <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 28" width="240" height="84"
+    style="image-rendering: pixelated" [style.--bg]="backgroundColor()" [style.--border-outer]="borderOuterColor()"
+    [style.--border-inner]="borderInnerColor()" [style.--text]="textColor()">
+
+    >
+    <!-- ===== BORDE EXTERIOR ===== -->
+    <rect x="2" y="0" width="76" height="28" fill="var(--border-outer)" />
+    <rect x="0" y="2" width="80" height="24" fill="var(--border-outer)" />
+
+    <!-- ===== BORDE INTERIOR ===== -->
+    <rect x="4" y="2" width="72" height="24" fill="var(--border-inner)" />
+    <rect x="2" y="4" width="76" height="20" fill="var(--border-inner)" />
+
+    <!-- ===== FONDO ===== -->
+    <rect x="6" y="4" width="68" height="20" fill="var(--bg)" />
+    <rect x="4" y="6" width="72" height="16" fill="var(--bg)" />
+
+    <!-- ===== DATA ===== -->
+    <g [id]="name()" fill="var(--text)"></g>
+  </svg>
+
+  <div class="absolute top-3.5 left-5 h-14 w-50 flex justify-center items-center overflow-hidden" [style.color]="textColor()" [style.background-color]="divBackgroundColor()">
+    <ng-content/>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="flex w-full h-1/2">
+  <div class="flex-1/3 h-full flex justify-center">
+    <img class="h-full" [src]="currentPokemon()?.sprites?.front_default" alt="Pokemon">
+  </div>
+  <div class="flex-2/3">
+    <div class="h-[15vh] mt-[1vh] bg-white pixel-box text-[5vw] flex justify-center">
+{{ currentPokemon()?.name
+    ? (currentPokemon()!.name.charAt(0).toUpperCase() + currentPokemon()!.name.substring(1))
+    : '' }}    </div>
+    <div class="flex h-[64%]">
+      <div class="flex-1/6 flex justify-center items-center">
+        <div class="h-[60%] w-[63%] p-[1vh] bg-white audio-box flex justify-center items-center" (click)="playSound(pokemonCry);">
+          <audio [src]="audio()" #pokemonCry></audio>
+          <img src="assets/icons/music_icon.svg" alt="Pokemon sound" class="h-[90%] cursor-pointer">
+        </div>
+      </div>
+      <div class=" flex-3/4">
+        <div class="w-full h-2/5 flex justify-evenly">
+          @for (type of currentPokemon()?.types; track $index) {
+          <img [src]="'assets/types/' + type.type.name + '.png'" [alt]="type.type.name + ' type image'" class="h-full">
+          }
+        </div>
+        <div class="w-full h-3/5 flex justify-center items-center">
+          <div class="h-[95%] w-[90%] bg-white pixel-box flex justify-center flex-col items-center text-[4vh]">
+            <div class="w-full text-[3vw]">
+              <div class="flex justify-evenly">
+                <p>
+                  Height
+                </p>
+                <p>
+                  {{currentPokemon()?.height}}
+                </p>
+              </div>
+              <div class="w-full h-px bg-gray-400"></div>
+              <div class="flex justify-evenly">
+                <p>
+                  Weight
+                </p>
+                <p>
+                  {{currentPokemon()?.weight}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-full h-1/2  flex justify-center items-center">
+  <div class="w-[90%] h-[90%] bg-[#ff3c41] flex justify-center items-center pixel-box">
+    <div class="h-full w-[90%] pixel-box bg-white text-[3vw] px-[2vw] py-[2vh]">
+      {{pokemonSpecies()?.flavor_text}}
+    </div>
+  </div>
+</div>

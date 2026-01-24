@@ -1,0 +1,269 @@
+.audio-box,
+.audio-box--wrapper {
+  clip-path: polygon(0px calc(100% - 12px),
+    4px calc(100% - 12px),
+    4px calc(100% - 8px),
+    8px calc(100% - 4px),
+    12px calc(100% - 4px),
+    12px 100%,
+    calc(100% - 12px) 100%,
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 12px),
+    100% calc(100% - 12px),
+    100% 12px,
+    calc(100% - 4px) 12px,
+    calc(100% - 4px) 8px,
+    calc(100% - 8px) 4px,
+    calc(100% - 12px) 4px,
+    calc(100% - 12px) 0px,
+    12px 0px,
+    12px 4px,
+    8px 4px,
+    4px 8px,
+    4px 12px,
+    0px 12px);
+  position: relative;
+}
+.audio-box {
+  border: 16px solid transparent;
+}
+.audio-box--wrapper {
+  width: fit-content;
+  height: fit-content;
+}
+.audio-box--wrapper .audio-box {
+  display: block;
+  clip-path: polygon(16px 20px,
+    20px 20px,
+    20px 16px,
+    calc(100% - 20px) 16px,
+    calc(100% - 20px) 20px,
+    calc(100% - 16px) 20px,
+    calc(100% - 16px) calc(100% - 20px),
+    calc(100% - 20px) calc(100% - 20px),
+    calc(100% - 20px) calc(100% - 16px),
+    20px calc(100% - 16px),
+    20px calc(100% - 20px),
+    16px calc(100% - 20px));
+}
+.audio-box::after,
+.audio-box--wrapper::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0px calc(100% - 12px),
+    4px calc(100% - 12px),
+    4px calc(100% - 8px),
+    8px calc(100% - 4px),
+    12px calc(100% - 4px),
+    12px 100%,
+    calc(100% - 12px) 100%,
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 12px),
+    100% calc(100% - 12px),
+    100% 12px,
+    calc(100% - 4px) 12px,
+    calc(100% - 4px) 8px,
+    calc(100% - 8px) 4px,
+    calc(100% - 12px) 4px,
+    calc(100% - 12px) 0px,
+    12px 0px,
+    12px 4px,
+    8px 4px,
+    4px 8px,
+    4px 12px,
+    0px 12px,
+    0px 50%,
+    16px 50%,
+    16px 20px,
+    20px 20px,
+    20px 16px,
+    calc(100% - 20px) 16px,
+    calc(100% - 20px) 20px,
+    calc(100% - 16px) 20px,
+    calc(100% - 16px) calc(100% - 20px),
+    calc(100% - 20px) calc(100% - 20px),
+    calc(100% - 20px) calc(100% - 16px),
+    20px calc(100% - 16px),
+    20px calc(100% - 20px),
+    16px calc(100% - 20px),
+    16px 50%,
+    0px 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ff3c41;
+  display: block;
+  pointer-events: none;
+}
+.audio-box::after {
+  margin: -16px;
+}
+
+/* --------------------------------------------------------- */
+
+.pixel-box,
+.pixel-box--wrapper {
+  clip-path: polygon(0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px);
+  position: relative;
+}
+.pixel-box {
+  border: 12px solid transparent;
+}
+.pixel-box--wrapper {
+  width: fit-content;
+  height: fit-content;
+}
+.pixel-box--wrapper .pixel-box {
+  display: block;
+  clip-path: polygon(12px 24px,
+    16px 24px,
+    16px 16px,
+    24px 16px,
+    24px 12px,
+    calc(100% - 24px) 12px,
+    calc(100% - 24px) 16px,
+    calc(100% - 16px) 16px,
+    calc(100% - 16px) 24px,
+    calc(100% - 12px) 24px,
+    calc(100% - 12px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 12px),
+    24px calc(100% - 12px),
+    24px calc(100% - 16px),
+    16px calc(100% - 16px),
+    16px calc(100% - 24px),
+    12px calc(100% - 24px));
+}
+.pixel-box::after,
+.pixel-box--wrapper::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0px calc(100% - 20px),
+    4px calc(100% - 20px),
+    4px calc(100% - 12px),
+    8px calc(100% - 12px),
+    8px calc(100% - 8px),
+    12px calc(100% - 8px),
+    12px calc(100% - 4px),
+    20px calc(100% - 4px),
+    20px 100%,
+    calc(100% - 20px) 100%,
+    calc(100% - 20px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 4px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 4px) calc(100% - 20px),
+    100% calc(100% - 20px),
+    100% 20px,
+    calc(100% - 4px) 20px,
+    calc(100% - 4px) 12px,
+    calc(100% - 8px) 12px,
+    calc(100% - 8px) 8px,
+    calc(100% - 12px) 8px,
+    calc(100% - 12px) 4px,
+    calc(100% - 20px) 4px,
+    calc(100% - 20px) 0px,
+    20px 0px,
+    20px 4px,
+    12px 4px,
+    12px 8px,
+    8px 8px,
+    8px 12px,
+    4px 12px,
+    4px 20px,
+    0px 20px,
+    0px 50%,
+    12px 50%,
+    12px 24px,
+    16px 24px,
+    16px 16px,
+    24px 16px,
+    24px 12px,
+    calc(100% - 24px) 12px,
+    calc(100% - 24px) 16px,
+    calc(100% - 16px) 16px,
+    calc(100% - 16px) 24px,
+    calc(100% - 12px) 24px,
+    calc(100% - 12px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 24px),
+    calc(100% - 16px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 16px),
+    calc(100% - 24px) calc(100% - 12px),
+    24px calc(100% - 12px),
+    24px calc(100% - 16px),
+    16px calc(100% - 16px),
+    16px calc(100% - 24px),
+    12px calc(100% - 24px),
+    12px 50%,
+    0px 50%);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ff3c41;
+  display: block;
+  pointer-events: none;
+}
+.pixel-box::after {
+  margin: -12px;
+}
+
+/* ----------------------------------- */
+.audio-box::before,
+.audio-box--wrapper::before,
+.pixel-box::before,
+.pixel-box--wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+  background: rgba(0, 0, 0, 0.062);
+  transform: translate(8px, 8px);
+  z-index: -1;
+  pointer-events: none;
+}
+

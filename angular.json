@@ -68,7 +68,7 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
+            "assets": [ "src/assets/fonts",
               {
                 "glob": "**/*",
                 "input": "public"

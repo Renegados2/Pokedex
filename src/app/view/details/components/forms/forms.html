@@ -1,0 +1,103 @@
+<div class="w-full h-3/4">
+  <div class="w-full h-full flex space-x-1 px-[5vw]">
+    <div class="w-[90vw] flex flex-col relative battle-background pixel-box my-[1vh]">
+
+      <img src="assets/battle_templates/front_battle_template.png" alt="Front battle template" class="absolute w-[25vw] top-[12vh] right-0">
+      <img [src]="forms()[currentIndex() ?? 0]?.front" alt="front_default" class="w-[14vw] absolute top-0 right-[5vw]">
+
+      <img src="assets/battle_templates/back_battle_template.png" alt="Back battle template"
+        class="absolute w-[32vw] bottom-0">
+      <img [src]="forms()[currentIndex() ?? 0]?.back" alt="back_default" class="absolute w-[15vw] bottom-[-3.4vh] left-[6vw]">
+
+    </div>
+  </div>
+</div>
+<div class="w-full flex justify-center items-center">
+  <div class="bg-white h-[90%] w-[90%] pixel-box flex justify-evenly items-center">
+
+    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
+      style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
+      [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="previousForm()"
+      class="cursor-pointer">
+      <g fill="var(--arrow-border)">
+        <!-- Línea vertical (6 px lógicos = 12) -->
+        <rect x="16" y="0" width="2" height="22" />
+
+        <!-- Línea horizontal (3 px lógicos) -->
+        <rect x="12" y="0" width="6" height="2" />
+        <rect x="12" y="22" width="6" height="2" />
+
+        <!-- Diagonal Up Down -->
+        <rect x="10" y="0" width="2" height="4" />
+        <rect x="8" y="2" width="2" height="4" />
+        <rect x="6" y="4" width="2" height="4" />
+        <rect x="4" y="6" width="2" height="4" />
+        <rect x="2" y="8" width="2" height="4" />
+        <rect x="0" y="10" width="2" height="4" />
+
+        <!-- Diagonal Down Up -->
+        <rect x="2" y="12" width="2" height="4" />
+        <rect x="4" y="14" width="2" height="4" />
+        <rect x="6" y="16" width="2" height="4" />
+        <rect x="8" y="18" width="2" height="4" />
+        <rect x="10" y="20" width="2" height="4" />
+      </g>
+
+      <g fill="var(--arrow-inner)">
+        <rect x="12" y="2" width="4" height="20" />
+        <rect x="10" y="4" width="2" height="16" />
+        <rect x="8" y="6" width="2" height="12" />
+        <rect x="6" y="8" width="2" height="8" />
+        <rect x="4" y="10" width="2" height="4" />
+      </g>
+    </svg>
+
+    <div>
+      <h1 class="text-[4vw]">{{ currentPokemon()?.name
+        ? (currentPokemon()!.name.charAt(0).toUpperCase() + currentPokemon()!.name.substring(1))
+        : '' }}</h1>
+      <div class="flex w-full justify-center">
+        <span class="text-[2vw] text-neutral-600">{{forms()[currentIndex()].type}}</span>
+      </div>
+    </div>
+
+    <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
+      style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
+      [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="nextForm()"
+      class="cursor-pointer">
+      <g fill="var(--arrow-border)">
+        <!-- Línea vertical (6 px lógicos = 12) -->
+        <rect x="0" y="0" width="2" height="22" />
+
+        <!-- Línea horizontal (3 px lógicos) -->
+        <rect x="0" y="0" width="6" height="2" />
+        <rect x="0" y="22" width="6" height="2" />
+
+        <!-- Diagonal Up Down -->
+        <rect x="6" y="0" width="2" height="4" />
+        <rect x="8" y="2" width="2" height="4" />
+        <rect x="10" y="4" width="2" height="4" />
+        <rect x="12" y="6" width="2" height="4" />
+        <rect x="14" y="8" width="2" height="4" />
+        <rect x="16" y="10" width="2" height="4" />
+
+        <!-- Diagonal Down Up -->
+        <rect x="14" y="12" width="2" height="4" />
+        <rect x="12" y="14" width="2" height="4" />
+        <rect x="10" y="16" width="2" height="4" />
+        <rect x="8" y="18" width="2" height="4" />
+        <rect x="6" y="20" width="2" height="4" />
+      </g>
+
+      <g fill="var(--arrow-inner)">
+        <rect x="2" y="2" width="4" height="20" />
+        <rect x="6" y="4" width="2" height="16" />
+        <rect x="8" y="6" width="2" height="12" />
+        <rect x="10" y="8" width="2" height="8" />
+        <rect x="12" y="10" width="2" height="4" />
+      </g>
+    </svg>
+
+  </div>
+
+</div>

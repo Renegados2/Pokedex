@@ -2,4 +2,6 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+  padding-bottom: 1vh;
+  border-bottom: 3px solid black;
 }
