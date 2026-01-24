@@ -1,7 +1,7 @@
-<nav class="h-full pt-2 overflow-hidden">
+<nav class="h-full pt-2 overflow-hidden bg-red-400">
     <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
         style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="previousPokemon()">
+        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="previousPokemon()" class="cursor-pointer">
         <g fill="var(--arrow-border)">
             <!-- Línea vertical (6 px lógicos = 12) -->
             <rect x="16" y="0" width="2" height="22" />
@@ -37,14 +37,14 @@
 
     @if (loaded()) {
       @for (button of NAV_BUTTONS; track button) {
-        <app-pixel-box [routerLink]="['/details', currentPokemon()?.id, button]" backgroundColor="#ff3c41" borderInnerColor="#b22a2d" borderOuterColor="#000000" textColor="#ffffff"
+        <app-pixel-box class="cursor-pointer" [routerLink]="['/details', currentPokemon()?.id, button]" backgroundColor="#ff3c41" borderInnerColor="#b22a2d" borderOuterColor="#000000" textColor="#ffffff"
         [svgCode]="navSVGs()[button]" [name]="button"></app-pixel-box>
       }
     }
 
     <svg class="pokedex-btn" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 24" width="60" height="80"
         style="image-rendering: pixelated" [style.--bg]="bg" [style.--border-outer]="outer"
-        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="nextPokemon()">
+        [style.--arrow-inner]="arrowInner" [style.--arrow-border]="arrowBorder" (click)="nextPokemon()" class="cursor-pointer">
         <g fill="var(--arrow-border)">
             <!-- Línea vertical (6 px lógicos = 12) -->
             <rect x="0" y="0" width="2" height="22" />
@@ -77,4 +77,7 @@
             <rect x="12" y="10" width="2" height="4" />
         </g>
     </svg>
+    <div [routerLink]="'/'" class="absolute top-[1vh] left-[1vh] w-[4vw] h-[4vh] bg-red-600 hover:bg-red-700 border-4 border-black rounded-2xl cursor-pointer text-white flex justify-center items-center">
+      <p>Go back</p>
+    </div>
 </nav>

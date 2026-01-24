@@ -1,33 +1,88 @@
-<div class="w-full h-full bg-amber-400">
-  <div class="w-full h-[10vh] bg-purple-600 flex">
-    <div class="w-[15vw] bg-red-500"></div>
-    <div class="w-[55vw] bg-blue-500"></div>
-    <div class="w-[30vw] bg-yellow-500"></div>
+<div class="w-full h-full">
+  <div class="w-full h-[9vh] bg-white flex border-y-8 border-black">
+    <div class="w-[15vw]  flex justify-evenly">
+      <div class="w-[15vw] flex justify-evenly items-center">
+        <div class="w-[6vw] h-full flex items-center justify-center text-white text-[4vw] font-bold" [ngClass]="currentPokemon()?.sprites?.back_default ? 'bg-blue-500' : 'bg-blue-200'">
+          M
+        </div>
+        <div class="w-[6vw] h-full flex items-center justify-center text-white text-[4vw] font-bold" [ngClass]="currentPokemon()?.sprites?.back_female ? 'bg-pink-500' : 'bg-pink-200'">
+          F
+        </div>
+      </div>
+
+    </div>
+    <div class="w-[55vw] text-[6vw] flex items-center">
+      <h1>{{ currentPokemon()?.name
+        ? (currentPokemon()!.name.charAt(0).toUpperCase() + currentPokemon()!.name.substring(1))
+        : '' }} </h1>
+    </div>
+    <div class="w-[30vw] flex justify-evenly">
+      @for (type of currentPokemon()?.types; track $index) {
+      <img [src]="'assets/types/' + type.type.name + '.png'" [alt]="type.type.name + ' type image'" class="h-full">
+      }
+    </div>
   </div>
-  <div class="w-full bg-green-400 h-[60vh] flex">
-    <div class="py-[1vh] px-[1vw] w-1/4 bg-yellow-700 h-full flex flex-col items-center space-y-[1.4vh]">
+  <div class="w-full h-[76vh] flex">
+    <div
+      class="py-[1vh] px-[1vw] mt-[1vh] ml-[-1.3vw] pl-[2vw] w-1/4 h-full flex flex-col items-center space-y-[4vh] pixel-box bg-white">
       @for (stat of currentPokemon()?.stats; track $index) {
       <div class="w-full flex justify-between">
         @switch (stat.stat.name) {
-          @case ('special-attack') {
-            <span class="text-[3vw]"> Sp. Atk </span>
-          }
-          @case ('special-defense') {
-            <span class="text-[3vw]"> Sp. Def </span>
-          }
-          @default {
-            <span class="text-[3vw]"> {{ stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1) }} </span>
-          }
+        @case ('special-attack') {
+        <span class="text-[3vw]"> Sp. Atk </span>
         }
-        <progress id="file" [value]="stat.base_stat" max="100" class="pixel-stat-bar my-[1vh] w-[20vh]"> 32% </progress>
+        @case ('special-defense') {
+        <span class="text-[3vw]"> Sp. Def </span>
+        }
+        @default {
+        <span class="text-[3vw]"> {{ stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1) }} </span>
+        }
+        }
+        <progress id="file" [value]="stat.base_stat" max="100" class="pixel-stat-bar my-[1vh] w-[20vh]"> {{stat.base_stat}} </progress>
       </div>
       }
     </div>
 
-    <div class="mx-[1vw] bg-red-600 h-full w-3/4">
-      <div class="w-full bg-amber-900 h-1/3"></div>
-      <div class="w-full bg-yellow-900 h-1/3"></div>
-      <div class="w-full bg-blue-900 h-1/3"></div>
+    <div class="mx-[1vw] h-full w-3/4">
+      <div class="w-full bg-white h-1/3 flex text-[5vw] justify-evenly pixel-box">
+        @for (pokemonName of getPokemonEvolutionsNames(); track $index) {
+        @if ($index === getPokemonEvolutionsNames().length - 1 ) {
+        <h1> {{pokemonName.charAt(0).toUpperCase() + pokemonName.substring(1)}} </h1>
+        <div></div>
+        } @else {
+        <h1> {{pokemonName.charAt(0).toUpperCase() + pokemonName.substring(1)}} -> </h1>
+        }
+        }
+      </div>
+
+      <div class="w-full h-2/3 mt-[1vh] flex justify-center space-x-[1vw]">
+
+        <div class="w-1/2 bg-red-500 pixel-box">
+          <div class="w-full h-[4vh] py-[4vh] bg-red-200 flex justify-center items-center">
+            <h1 class="text-[3vw]">Moves</h1>
+          </div>
+          <div class="overflow-scroll space-y-[1vh] max-h-[42.7vh] py-[1vh] px-[1vw]">
+            @for (move of currentPokemon()?.moves; track $index) {
+            <div class="flex h-[5vh] bg-white pixel-stat-bar justify-center">
+              <h2 class="text-[1.6vw]">{{ move.move.name }}</h2>
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="w-1/2 bg-red-500 pixel-box">
+          <div class="w-full h-[4vh] py-[4vh] bg-red-200 flex justify-center items-center">
+            <h1 class="text-[3vw]">Abilities</h1>
+          </div>
+          <div class="overflow-scroll space-y-[1vh] h-[42.7vh] py-[1vh] px-[1vw]">
+            @for (ability of currentPokemon()?.abilities; track $index) {
+            <div class="flex h-[5vh] bg-white pixel-stat-bar justify-center">
+              <h2 class="text-[1.6vw]">{{ ability.ability?.name }}</h2>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

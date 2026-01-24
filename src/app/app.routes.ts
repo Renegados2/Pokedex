@@ -16,8 +16,12 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'data',
+        redirectTo: 'info',
         pathMatch: 'full'
+      },
+      {
+        path: 'info',
+        component: Info,
       },
       {
         path: 'data',
@@ -26,10 +30,6 @@ export const routes: Routes = [
       {
         path: 'forms',
         component: Forms,
-      },
-      {
-        path: 'info',
-        component: Info,
       },
     ],
   },

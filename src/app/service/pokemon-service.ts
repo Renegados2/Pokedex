@@ -112,6 +112,8 @@ export class PokemonService {
         this.currentPokemon = this._allPokemons()[0].id;
         const pokemons = this._allPokemons().slice(0, this.PAGINATOR_JUMP);
         this._pokemons.set(pokemons);
+        console.log(this._allPokemons());
+
       },
     });
   }
@@ -190,8 +192,9 @@ export class PokemonService {
       })
     });
   }
+
   private getPokemonEvolutionChain() {
-    const url = this._pokemonEvolutionChain()?.evolution_chain.url ?? '';
+    const url = this._pokemonSpecies()?.evolution_chain.url ?? '';
 
     this._http.get<any>(url).subscribe({
       next: (response: any) => {
