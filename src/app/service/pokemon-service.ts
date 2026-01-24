@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { Pokemon, SimplePokemon } from '../model/pokemon';
 import { Species } from '../model/species';
+import { EvolutionChain } from '../model/evolution';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class PokemonService {
 
   private _currentPokemon: WritableSignal<Pokemon | null>;
   private _pokemonSpecies: WritableSignal<Species | null>;
+  private _pokemonEvolutionChain: WritableSignal<EvolutionChain | null>;
 
   public pokemons: Signal<SimplePokemon[]>;
 
@@ -32,6 +34,7 @@ export class PokemonService {
     this._pokemons = signal<SimplePokemon[]>([]);
     this._allPokemons = signal<SimplePokemon[]>([]);
     this._pokemonSpecies = signal(null);
+    this._pokemonEvolutionChain = signal(null);
     this._error = signal<boolean>(false);
 
     this._count = signal<number>(0);
@@ -174,6 +177,22 @@ export class PokemonService {
           flavor_text: this.getFlavorText(texts),
         });
 
+        this._error.set(false);
+      },
+      error: () => {
+        this._error.set(true);
+      },
+      complete:(() => {
+        this.getPokemonEvolutionChain()
+      })
+    });
+  }
+  private getPokemonEvolutionChain() {
+    const url = this._pokemonEvolutionChain()?.evolution_chain.url ?? '';
+
+    this._http.get<any>(url).subscribe({
+      next: (response: any) => {
+        this._pokemonEvolutionChain.set(response)
         this._error.set(false);
       },
       error: () => {
