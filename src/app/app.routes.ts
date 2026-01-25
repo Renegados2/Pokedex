@@ -4,6 +4,7 @@ import { Details } from './view/details/details';
 import { Data } from './view/details/components/data/data';
 import { Forms } from './view/details/components/forms/forms';
 import { Info } from './view/details/components/info/info';
+import { NotFountPage } from './view/not-fount-page/not-fount-page';
 
 export const routes: Routes = [
   {
@@ -32,5 +33,9 @@ export const routes: Routes = [
         component: Forms,
       },
     ],
+  },
+    {
+    path: '**',
+    component: NotFountPage,
   },
 ];

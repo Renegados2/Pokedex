@@ -39,7 +39,6 @@ export class Header {
       this._http
         .get('assets/text_svg/' + buttonText + '_text.svg', { responseType: 'text' })
         .subscribe((svg) => {
-          console.log("svg");
           this.navSVGs.update((current) => {return {...current, [buttonText]: svg}})
           this.loadedCount++;
           if(this.loadedCount == this.NAV_BUTTONS.length) {

@@ -112,8 +112,6 @@ export class PokemonService {
         this.currentPokemon = this._allPokemons()[0].id;
         const pokemons = this._allPokemons().slice(0, this.PAGINATOR_JUMP);
         this._pokemons.set(pokemons);
-        console.log(this._allPokemons());
-
       },
     });
   }
