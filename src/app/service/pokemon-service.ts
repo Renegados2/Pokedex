@@ -162,7 +162,7 @@ export class PokemonService {
   }
 
   public searchPokemon(searchTerm: string) {
-    return this._pokemons().filter((p) => p.name.includes(searchTerm) || p.id == Number.parseInt(searchTerm))
+    return this._allPokemons().filter((p:any) => p.name.includes(searchTerm) || p.id == Number.parseInt(searchTerm))
   }
 
   private parseResponse(response: any) {
