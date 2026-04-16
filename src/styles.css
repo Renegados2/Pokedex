@@ -17,7 +17,7 @@ body {
 
 @font-face {
   font-family: 'PokemonPixel';
-  src: url('Pokedex/assets/fonts/pokemon-bw.otf.woff2') format('woff2');
+  src: url('https://renegados2.github.io/Pokedex/assets/fonts/pokemon-bw.otf.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
