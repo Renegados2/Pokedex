@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -17,6 +18,7 @@ import { Species } from '../../../../model/species';
   imports: [],
   templateUrl: './forms.html',
   styleUrl: './forms.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Forms {
   bg = '#d1d0cb';
@@ -59,8 +61,7 @@ export class Forms {
           back: sprites.back_shiny_female,
         });
       }
-          this._currentIndex = signal<number>(0);
-
+      this._currentIndex = signal<number>(0);
 
       return forms;
     });
@@ -88,5 +89,4 @@ export class Forms {
     const newIndex = (this._currentIndex() - 1 + length) % length;
     this._currentIndex.set(newIndex);
   }
-
 }

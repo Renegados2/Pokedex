@@ -11,10 +11,12 @@
       </div>
 
     </div>
-    <div class="w-[55vw] text-[6vw] flex items-center">
-      <h1>{{ currentPokemon()?.name
+    <div class="w-[55vw] text-[5vw] flex items-center">
+      <h1>{{
+      currentPokemon()?.name
         ? (currentPokemon()!.name.charAt(0).toUpperCase() + currentPokemon()!.name.substring(1))
-        : '' }} </h1>
+        : ''
+        }} </h1>
     </div>
     <div class="w-[30vw] flex justify-evenly">
       @for (type of currentPokemon()?.types; track $index) {

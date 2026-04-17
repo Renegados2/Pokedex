@@ -1,13 +1,22 @@
-import { Component, computed, inject, signal, Signal, WritableSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+  Signal,
+  WritableSignal,
+} from '@angular/core';
 import { PokemonService } from '../../service/pokemon-service';
 import { Pokemon, SimplePokemon } from '../../model/pokemon';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
   imports: [RouterLink, FormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Home {
   protected readonly COLORS: any = {
@@ -25,8 +34,8 @@ export class Home {
       border: '#8a8a89',
     },
     selectedPokemonBox: {
-      border: '#ff6467'
-    }
+      border: '#ff6467',
+    },
   };
 
   private _pokeService: PokemonService;
@@ -35,46 +44,44 @@ export class Home {
   protected next: Signal<string>;
   protected previous: Signal<string>;
   protected pokemons: Signal<SimplePokemon[]>;
-  protected currentPokemon: Signal<Pokemon | null>
-  
-  protected searchTerm: WritableSignal<string>
+  protected currentPokemon: Signal<Pokemon | null>;
+
+  protected searchTerm: WritableSignal<string>;
 
   constructor() {
     this._pokeService = inject(PokemonService);
 
     this._pokeService.getPokemons();
 
-    this.count = this._pokeService.count
-    this.next = this._pokeService.next
-    this.previous = this._pokeService.previous
-    
-    this.currentPokemon = this._pokeService.currentPokemon
-    
-    this.searchTerm = signal('')
+    this.count = this._pokeService.count;
+    this.next = this._pokeService.next;
+    this.previous = this._pokeService.previous;
 
+    this.currentPokemon = this._pokeService.currentPokemon;
+
+    this.searchTerm = signal('');
 
     this.pokemons = computed(() => {
-      let result: SimplePokemon[] = []
-      if(this.searchTerm()) {
-        result = this._pokeService.searchPokemon(this.searchTerm())
+      let result: SimplePokemon[] = [];
+      if (this.searchTerm()) {
+        result = this._pokeService.searchPokemon(this.searchTerm());
       } else {
-        result = this._pokeService.pokemons()
+        result = this._pokeService.pokemons();
       }
 
-      return result
+      return result;
     });
   }
 
   previousPage() {
-    this._pokeService.previousPage()
+    this._pokeService.previousPage();
   }
 
   nextPage() {
-    this._pokeService.nextPage()
+    this._pokeService.nextPage();
   }
 
   selectPokemon(pokemon: SimplePokemon) {
-    this._pokeService.currentPokemon = pokemon.id
+    this._pokeService.currentPokemon = pokemon.id;
   }
-
 }

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, Signal, signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { PixelBox } from '../pixel-box/pixel-box';
 import { RouterLink } from '@angular/router';
 import { PokemonService } from '../../../service/pokemon-service';
@@ -10,6 +10,7 @@ import { Pokemon } from '../../../model/pokemon';
   imports: [PixelBox, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Header {
   bg = '#d1d0cb';

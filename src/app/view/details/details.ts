@@ -1,11 +1,4 @@
-import {
-  Component,
-  inject,
-  input,
-  InputSignal,
-  OnInit,
-  Signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, InputSignal, OnInit, Signal } from '@angular/core';
 import { Header } from '../components/header/header';
 import { PokemonService } from '../../service/pokemon-service';
 import { Pokemon } from '../../model/pokemon';
@@ -16,6 +9,7 @@ import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
   imports: [Header, RouterOutlet],
   templateUrl: './details.html',
   styleUrl: './details.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Details implements OnInit {
   public id: InputSignal<number> = input.required<number>();

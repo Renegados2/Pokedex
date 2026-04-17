@@ -1,4 +1,4 @@
-import { Component, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { Pokemon } from '../../../../model/pokemon';
 import { PokemonService } from '../../../../service/pokemon-service';
 import { Species } from '../../../../model/species';
@@ -10,6 +10,7 @@ import { NgClass } from '@angular/common';
   imports: [NgClass],
   templateUrl: './data.html',
   styleUrl: './data.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Data {
   private _pokemonService: PokemonService;

@@ -1,4 +1,11 @@
-import { Component, inject, signal, Signal, WritableSignal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+  Signal,
+  WritableSignal,
+} from '@angular/core';
 import { Pokemon } from '../../../../model/pokemon';
 import { PokemonService } from '../../../../service/pokemon-service';
 import { Species } from '../../../../model/species';
@@ -8,9 +15,10 @@ import { Species } from '../../../../model/species';
   imports: [],
   templateUrl: './info.html',
   styleUrl: './info.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Info {
- private _pokemonService: PokemonService;
+  private _pokemonService: PokemonService;
 
   protected currentPokemon: Signal<Pokemon | null>;
   protected pokemonSpecies: Signal<Species | null>;
@@ -45,4 +53,3 @@ export class Info {
     audioEl.play().catch(() => {});
   }
 }
-
